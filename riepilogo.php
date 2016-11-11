@@ -7,9 +7,8 @@
     stampaInizioPagina("Riepilogo", "funzioni_js.js");
     $_SESSION['doc']=$_GET['id'];
     $info=getInfoDoc($_SESSION['doc']);
+    stampaErrore('err_registro');
     echo "<h3>Pagina del Professore: ".$info['nome']." ".$info['cognome']."</h3>";
-
-
     $anno=getAnno();
     ?>
     Anno accademico:
@@ -30,10 +29,8 @@
     <?
       echo stampaLink("modulo_setCalendario.php","Imposta calendario didattico");
       stampaErrore('esito');
-      unset($_SESSION['errore']);
       ?>
   </div>
-  <!--<input type="button" value="Mostra Corsi" onclick="aggiorna()">!-->
   <hr>
     <strong>Insegnamenti:</strong>
     <div id="link"></div>
