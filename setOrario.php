@@ -52,7 +52,7 @@ function conta($day,$inizio){
 if (!controllaSessione()) {
   $_SESSION['errore']['err_sessione']="Utente non ammesso";
 }else{
-  if (controllaRegistro($_SESSION['id'], $_SESSION['annoAcc'])) {
+  if (controllaRegistro($_SESSION['id'])) {
     header("Location: registro.php");
   }else {
     $giornoIn=$_POST['giorno_in'];

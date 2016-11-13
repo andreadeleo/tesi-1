@@ -4,7 +4,7 @@ if (!controllaSessione()) {
   $_SESSION['errore']['err_sessione']="Utente non ammesso";
   header("Location: index.php");
 }else{
-  if(controllaRegistro($_SESSION['id'], $_SESSION['annoAcc'])){
+  if(controllaRegistro($_SESSION['id'])){
     header("Location: registro.php");
   }else{
     stampaInizioPagina("Imposta orario");

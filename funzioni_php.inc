@@ -74,8 +74,8 @@ function getMese(){
   '12' =>"Dicembre" );
 }
 
-function controllaRegistro($cod, $anno){
-  $ris=getElencoRegistro($cod,$anno);
+function controllaRegistro($cod){
+  $ris=getElencoRegistro($cod);
   if($ris->fetch()){
     return true;
   }else{
