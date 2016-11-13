@@ -9,7 +9,7 @@
     }
   }
 
-  function validaOrario(modulo){
+  /*function validaOrario(modulo){
     var flag=true;
     pulisci(new Array("err_dataIn", "err_dataFin", "err_giorni"));
     var giorno_in=modulo.giorno_in.value;
@@ -56,7 +56,7 @@
       giorno_fin.options['31'].style.display="inline";
     }
   }
-
+*/
   function aggiorna(){
       var xhr=new XMLHttpRequest();
       xhr.onreadystatechange=function(){

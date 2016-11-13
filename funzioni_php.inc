@@ -31,7 +31,7 @@ function controllaSessione(){
 
 function getCds($cds){
   $corso=strtolower($cds);
-  if ($corso=="economia e commercio") {
+  if ($corso=="economia e commercio"||$corso=="economia e commercio ") {
     return "CLEC";
   }
   if ($corso=="economia  e informatica per l'impresa") {
