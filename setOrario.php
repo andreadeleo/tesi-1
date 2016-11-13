@@ -100,7 +100,7 @@ if (!controllaSessione()) {
         $ris=aumenta($prova,$dataInizio,$dataFine);
         for($j=0;$j<count($ris);$j++){
           $giorni=explode("-",$ris[$j]);
-          setOrario($_SESSION['id'],$annoAcc,$giorni[0],$giorni[1],$giorni[2]);
+          setOrario($_SESSION['id'],$giorni[0],$giorni[1],$giorni[2]);
         }
         header ("Location:registro.php");
       }

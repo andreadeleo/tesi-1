@@ -61,33 +61,34 @@ function getElencoRegistro($id){
   return $ris;
 }
 
-function setOrario($ins,$anno_acc , $anno, $mese, $giorno){
+function setOrario($ins , $anno, $mese, $giorno){
   $pdo=dbConnect();
-  $ris=$pdo->prepare("INSERT INTO reg_corso (cod,  anno_acc,anno ,mese, giorno, tipologia, argomento) values (:ins, :anno_acc, :anno, :mese, :giorno, NULL, NULL)");
+  $ris=$pdo->prepare("INSERT INTO reg_corso (cod, anno ,mese, giorno, tipologia, argomento) values (:ins, :anno, :mese, :giorno, NULL, NULL)");
   $ris->bindValue(":ins", $ins);
-  $ris->bindValue(":anno_acc", $anno_acc);
   $ris->bindValue(":anno", $anno);
   $ris->bindValue(":mese", $mese);
   $ris->bindValue(":giorno", $giorno);
   $ris->execute();
 }
 
-function deleteGiorno($cod,$annoAcc,$giorno,$mese){
+function deleteGiorno($cod,$giorno,$mese){
   $pdo=dbConnect();
-  $ris=$pdo->prepare("DELETE FROM reg_corso WHERE cod=:cod AND anno_acc=:anno_acc AND giorno=:giorno AND mese=:mese");
+  $ris=$pdo->prepare("DELETE FROM reg_corso WHERE cod=:cod AND giorno=:giorno AND mese=:mese");
   $ris->bindValue(":cod",$cod );
-  $ris->bindValue(":anno_acc",$annoAcc);
   $ris->bindValue(":giorno", $giorno);
   $ris->bindValue(":mese", $mese);
-  $ris->execute();
+  if($ris->execute()){
+    return true;
+  }else {
+    return false;
+  }
 
 }
 
- function getElencoRegistroModifica($cod,$annoAcc,$giorno,$mese){
+ function getElencoRegistroModifica($cod,$giorno,$mese){
    $pdo=dbConnect();
-   $ris=$pdo->prepare("SELECT * FROM reg_corso WHERE cod=:cod AND anno_acc=:anno_acc AND giorno=:giorno AND mese=:mese");
+   $ris=$pdo->prepare("SELECT * FROM reg_corso WHERE cod=:cod AND giorno=:giorno AND mese=:mese");
    $ris->bindValue(":cod",$cod );
-   $ris->bindValue(":anno_acc",$annoAcc);
    $ris->bindValue(":giorno", $giorno);
    $ris->bindValue(":mese", $mese);
    $ris->execute();
@@ -95,29 +96,35 @@ function deleteGiorno($cod,$annoAcc,$giorno,$mese){
    return $riga;
  }
 
- function setRegistro($cod,$annoAcc,$giorno,$mese,$tipologia,$argomento){
+ function setRegistro($cod,$giorno,$mese,$tipologia,$argomento){
    $pdo=dbConnect();
-   $ris=$pdo->prepare("UPDATE reg_corso SET tipologia=:tipologia , argomento=:argomento WHERE cod=:cod AND anno_acc=:anno_acc AND mese=:mese AND giorno=:giorno");
+   $ris=$pdo->prepare("UPDATE reg_corso SET tipologia=:tipologia , argomento=:argomento WHERE cod=:cod AND mese=:mese AND giorno=:giorno");
    $ris->bindValue(":cod",$cod );
-   $ris->bindValue(":anno_acc",$annoAcc);
    $ris->bindValue(":giorno", $giorno);
    $ris->bindValue(":mese", $mese);
    $ris->bindValue(":tipologia", $tipologia);
    $ris->bindValue(":argomento", $argomento);
-   $ris->execute();
+   if($ris->execute()){
+     return true;
+   }else {
+     return false;
+   }
  }
 
- function insertRegistro($cod,$annoAcc,$anno,$giorno,$mese,$tipologia,$argomento){
+ function insertRegistro($cod,$anno,$giorno,$mese,$tipologia,$argomento){
    $pdo=dbConnect();
-   $ris=$pdo->prepare("INSERT INTO reg_corso (cod, anno_acc, anno, mese, giorno, tipologia, argomento) VALUES (:cod, :anno_acc, :anno, :mese, :giorno, :tipologia, :argomento)");
+   $ris=$pdo->prepare("INSERT INTO reg_corso (cod, anno, mese, giorno, tipologia, argomento) VALUES (:cod, :anno, :mese, :giorno, :tipologia, :argomento)");
    $ris->bindValue(":cod",$cod );
-   $ris->bindValue(":anno_acc",$annoAcc);
    $ris->bindValue(":anno",$anno);
    $ris->bindValue(":giorno", $giorno);
    $ris->bindValue(":mese", $mese);
    $ris->bindValue(":tipologia", $tipologia);
    $ris->bindValue(":argomento", $argomento);
-   $ris->execute();
+   if($ris->execute()){
+     return true;
+   }else {
+     return false;
+   }
  }
 
 function setCalendario($anno_acc, $semestre, $mese_in, $giorno_in, $mese_fin, $giorno_fin){

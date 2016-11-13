@@ -47,14 +47,14 @@ function stampaModuloOrario($giorno_in="", $mese_in="", $giorno_fin="", $mese_fi
 <?php
 }
 
-function stampaModuloModifica($lezione="",$mod=""){
+function stampaModuloModifica($lezione="", $anno="", $mod=""){
   $tipologia="";
   $argomento="";
   if($mod=="modifica"){
    ?>
    <form action="modifica.php" method="post">
      <fieldset>
-       <legend> <?="<h2>Lezione del ".$lezione['giorno']."/".$lezione['mese']." Anno Accademico ".$lezione['anno_acc']."</h2>"?></legend>
+       <legend> <?="<h2>Lezione del ".$lezione['giorno']."/".$lezione['mese']." Anno Accademico ".$anno."</h2>"?></legend>
        <input type="hidden" name="giorno" value="<?=$lezione['giorno']?>">
        <input type="hidden" name="mese" value="<?=$lezione['mese']?>">
     <?

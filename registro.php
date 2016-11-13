@@ -19,6 +19,7 @@ if (!array_key_exists('id', $_SESSION)) {
     echo "<h1 align='center'> Registro del corso: ".$ins['nome_c']." (".getCds($ins['cds']).")<br>Anno Accademico: ".$_SESSION['annoAcc']."<br>Docente: ".$doc['nome']." ".$doc['cognome']."</h1>";
     echo stampaLink("aggiungiModificaForm.php?mod=aggiungi","Aggiungi nuova lezione");
     echo "<div align=right>".stampaLink("riepilogo.php?id=".$_SESSION['doc'],"Torna alla home")."</div>";
+    stampaErrore("err_registro");
     echo "<br><form action='elimina.php' method='post'>";
     echo "<table cellspacing='0' cellpadding='5' border='1'><tr><th>Elimina</th><th>Giorno</th><th>Mese</th><th>Anno</th><th>Tipologia</th><th>Argomento</th><th>Inserisci/Modifica</th>";
     while($n=$ris->fetch()){
@@ -34,6 +35,7 @@ if (!array_key_exists('id', $_SESSION)) {
     echo "<input type='submit' value='Elimina'>";
     echo "</form>";
     stampaTest($_SESSION);
+    unset($_SESSION['errore']);
     stampaFinePagina();
   }
 }
