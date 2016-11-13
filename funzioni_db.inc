@@ -53,11 +53,10 @@ function getDoc(){
   return $ris;
 }
 
-function getElencoRegistro($id, $anno){
+function getElencoRegistro($id){
   $pdo=dbConnect();
-  $ris=$pdo->prepare("SELECT * from reg_corso where cod=:id and anno_acc=:anno ORDER BY anno,mese,giorno");
+  $ris=$pdo->prepare("SELECT * from reg_corso where cod=:id ORDER BY anno,mese,giorno");
   $ris->bindValue("id", $id);
-  $ris->bindValue("anno", $anno);
   $ris->execute();
   return $ris;
 }
