@@ -8,4 +8,5 @@ while ($n=$ris->fetch()) {
 stampaTest($_SESSION);
 unset($_SESSION);
 session_destroy();
+//CIAO
  ?>
