@@ -9,4 +9,6 @@ stampaTest($_SESSION);
 unset($_SESSION);
 session_destroy();
 //CIAO
+//ahdakjdhakdjhasdjh
+//cacca
  ?>
