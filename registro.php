@@ -16,7 +16,7 @@ if (!array_key_exists('id', $_SESSION)) {
     $ris=getElencoRegistro($_SESSION['id']);
     $ins=getInfoCorso($_SESSION['id']);
     $doc=getInfoDoc($_SESSION['doc']);
-    echo "<h1 align='center'> Registro del corso: ".$ins['nome_c']." (".getCds($ins['cds']).")<br>Anno Accademico: ".$_SESSION['annoAcc']."<br>Docente: ".$doc['nome']." ".$doc['cognome']."</h1>";
+    echo "<h1 align='center'>Registro del corso: ".$ins['nome_c']." (".getCds($ins['cds']).")<br>Anno Accademico: ".$_SESSION['annoAcc']."<br>Docente: ".$doc['nome']." ".$doc['cognome']."</h1>";
     echo stampaLink("aggiungiModificaForm.php?mod=aggiungi","Aggiungi nuova lezione");
     echo "<div align=right>".stampaLink("riepilogo.php?id=".$_SESSION['doc'],"Torna alla home")."</div>";
     stampaErrore("err_registro");
